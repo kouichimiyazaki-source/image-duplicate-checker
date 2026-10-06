@@ -43,4 +43,4 @@ pip install -r requirements.txt
 
 ## ライセンス
 
-未設定です。
+[MIT License](LICENSE)
