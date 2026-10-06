@@ -57,8 +57,14 @@ def get_script_dir():
 
 def get_icon_path():
     """icon.ico を .pyw / exe と同じフォルダから探す。無ければ None。"""
-    p = get_script_dir() / 'icon.ico'
-    return p if p.exists() else None
+    candidates = [get_script_dir() / 'icon.ico']
+    meipass = getattr(sys, '_MEIPASS', None)  # PyInstaller(--onefile)の展開先
+    if meipass:
+        candidates.append(Path(meipass) / 'icon.ico')
+    for p in candidates:
+        if p.exists():
+            return p
+    return None
 
 
 class _GroupingMixin:
