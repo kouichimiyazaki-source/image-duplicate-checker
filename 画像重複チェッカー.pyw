@@ -5,9 +5,6 @@
 
 必要ライブラリ: Pillow, imagehash, (任意)send2trash
     pip install Pillow imagehash send2trash
-
---------------------------------------------------------------------
-
 """
 import os
 import sys
@@ -537,6 +534,8 @@ class App(tk.Tk):
         self._build_style()
         self._build_ui()
         self.report_callback_exception = self._log_callback_exception
+        if not HAS_SEND2TRASH:
+            self.action_msg_var.set('※ send2trash が未導入のため、削除は完全削除になります(pip install send2trash)')
         self._tick_spinner()
 
     def _apply_window_icon(self):

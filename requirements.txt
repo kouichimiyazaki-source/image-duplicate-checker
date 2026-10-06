@@ -1,0 +1,3 @@
+Pillow
+imagehash
+send2trash
